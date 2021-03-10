@@ -1,0 +1,5 @@
+1 - Tratamento de exceção: 
+    - Adicionado tratamento na inserção de itens fora do range estabelecido.
+    
+2- Melhorias:
+    - Adicionado validação de número de gênero no cadastro de uma nova série.
