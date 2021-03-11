@@ -10,55 +10,12 @@ namespace proj01Series
         static void Main(string[] args)
         {
 			
-            string opcaoUsuario = ObterOpcaoUsuario();
+           ObterOpcaoUsuario();
 
-		try{
-			while (opcaoUsuario.ToUpper() != "X")
-			{
-				
-				switch (opcaoUsuario)
-				{
-					case "1":
-						ListarSeries();
-						break;
-					case "2":
-						InserirSerie();
-						break;
-					case "3":
-						AtualizarSerie();
-						break;
-					case "4":
-						ExcluirSerie();
-						break;
-					case "5":
-						VisualizarSerie();
-						break;
-					case "C":
-						Console.Clear();
-						break;
-
-					default:
-						throw new ArgumentOutOfRangeException();
-
-				}
-			
-
-				opcaoUsuario = ObterOpcaoUsuario();
-			}
-		}catch{
-			
-			Console.WriteLine("Você digitou uma opção inválida, você possui mais uma tentativa.");
-			Console.WriteLine("Por favor, escolha apenas uma das opções abaixo:");
-			ObterOpcaoUsuario();
-
-			}
-
-			finally
-			{
-			Console.WriteLine("Obrigado por utilizar nossos serviços.");
-			Console.ReadLine();
-			}
+		
         }
+
+		
 
         private static void ExcluirSerie()
 		{//colocar uma confirmação de exclusão 
@@ -199,7 +156,62 @@ namespace proj01Series
 
 			string opcaoUsuario = Console.ReadLine().ToUpper();
 			Console.WriteLine();
-			return opcaoUsuario;
+			return MenuEscolhido(opcaoUsuario);
+		}
+
+		public static string MenuEscolhido(string opcaoUsuario){
+
+		
+
+			try{
+
+			while (opcaoUsuario.ToUpper() != "X")
+			{
+				
+				switch (opcaoUsuario)
+				{
+					case "1":
+						ListarSeries();
+						break;
+					case "2":
+						InserirSerie();
+						break;
+					case "3":
+						AtualizarSerie();
+						break;
+					case "4":
+						ExcluirSerie();
+						break;
+					case "5":
+						VisualizarSerie();
+						break;
+					case "C":
+						Console.Clear();
+						break;
+
+					default:
+						throw new ArgumentOutOfRangeException();
+
+				}
+			
+
+				opcaoUsuario = ObterOpcaoUsuario();
+			}
+		}catch{
+			
+			Console.WriteLine("Você digitou uma opção inválida, você possui mais uma tentativa.");
+			Console.WriteLine("Por favor, escolha apenas uma das opções abaixo:");
+			opcaoUsuario = ObterOpcaoUsuario();
+			MenuEscolhido(opcaoUsuario);
+
+			}
+
+			finally
+			{
+			Console.WriteLine("Obrigado por utilizar nossos serviços.");
+			Console.ReadLine();
+			}
+			return opcaoUsuario = ObterOpcaoUsuario();
 		}
     }
 }
