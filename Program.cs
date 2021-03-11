@@ -91,7 +91,7 @@ namespace proj01Series
 		{
 			int qtdGenero = 0;
 			Console.WriteLine("Inserir nova série");
-
+			try{
 			// https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getvalues?view=netcore-3.1
 			// https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getname?view=netcore-3.1
 			foreach (int i in Enum.GetValues(typeof(Genero)))
@@ -101,21 +101,21 @@ namespace proj01Series
 				
 			}//imprime todas as opções de gênero
 
+				
+					Console.WriteLine("Digite o gênero entre as opções acima: ");
+					int entradaGenero = int.Parse(Console.ReadLine());
 
-				Console.Write("Digite o gênero entre as opções acima: ");
-				int entradaGenero = int.Parse(Console.ReadLine());
+					if (entradaGenero <= qtdGenero)
+					{
+						Console.WriteLine("Digite o Título da Série: ");
+						string entradaTitulo = Console.ReadLine();
 
-			if (entradaGenero <= qtdGenero)
-			{
-				Console.Write("Digite o Título da Série: ");
-				string entradaTitulo = Console.ReadLine();
+						Console.WriteLine("Digite o Ano de Início da Série: ");
+						int entradaAno = int.Parse(Console.ReadLine());
 
-				Console.Write("Digite o Ano de Início da Série: ");
-				int entradaAno = int.Parse(Console.ReadLine());
-
-				Console.Write("Digite a Descrição da Série: ");
-				string entradaDescricao = Console.ReadLine();
-
+						Console.WriteLine("Digite a Descrição da Série: ");
+						string entradaDescricao = Console.ReadLine();
+				
            	 //Proximo id vai pegar o count (que começa em 1)
 				Serie novaSerie = new Serie(id: repositorio.ProximoId(),
 										genero: (Genero)entradaGenero,
@@ -133,6 +133,15 @@ namespace proj01Series
 				Console.WriteLine();
 				InserirSerie();
 			}
+
+		}catch(FormatException e){
+			Console.WriteLine(" ");
+			Console.WriteLine("Você digitou algo inválido. Para data e id, use apenas números. Erro: "+e);
+			Console.WriteLine(" ");
+			Console.WriteLine("Tente novamente: ");
+			Console.WriteLine(" ");
+			InserirSerie();
+		}
 
 			
 		}//insere no repositorio
@@ -157,7 +166,8 @@ namespace proj01Series
 			return MenuEscolhido(opcaoUsuario);
 		}
 
-		public static string MenuEscolhido(string opcaoUsuario){
+		public static string MenuEscolhido(string opcaoUsuario)
+		{
 
 		
 
@@ -208,8 +218,11 @@ namespace proj01Series
 			{
 			Console.WriteLine("Obrigado por utilizar nossos serviços.");
 			Console.ReadLine();
+					
 			}
 			return opcaoUsuario = ObterOpcaoUsuario();
 		}
+
+	
     }
 }
