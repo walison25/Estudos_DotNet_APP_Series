@@ -107,8 +107,6 @@ namespace proj01Series
 
 			if (entradaGenero <= qtdGenero)
 			{
-			
-
 				Console.Write("Digite o Título da Série: ");
 				string entradaTitulo = Console.ReadLine();
 
@@ -199,7 +197,7 @@ namespace proj01Series
 			}
 		}catch{
 			
-			Console.WriteLine("Você digitou uma opção inválida, você possui mais uma tentativa.");
+			Console.WriteLine("Você digitou uma opção inválida.");
 			Console.WriteLine("Por favor, escolha apenas uma das opções abaixo:");
 			opcaoUsuario = ObterOpcaoUsuario();
 			MenuEscolhido(opcaoUsuario);
